@@ -3,9 +3,16 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/flowbite-react/**/*.js',
+  ],
+  darkMode: 'class',
   theme: {
     extend: {
+      transitionProperty: {
+        width: 'width',
+      },
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
       },
@@ -23,7 +30,19 @@ module.exports = {
           800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
           900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
         },
-        dark: '#222222',
+        secondary: {
+          50: '#ff7792',
+          100: '#ff6d88',
+          200: '#ff637e',
+          300: '#fd5974',
+          400: '#f34f6a',
+          500: '#e94560',
+          600: '#df3b56',
+          700: '#d5314c',
+          800: '#cb2742',
+          900: '#c11d38',
+        },
+        dark: '#000000',
       },
       keyframes: {
         flicker: {
@@ -52,5 +71,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('flowbite/plugin')],
 };
