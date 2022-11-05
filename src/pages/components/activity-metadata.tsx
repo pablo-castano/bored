@@ -20,7 +20,7 @@ export default function ActivityMetadata(data: props) {
       <div className='flex flex-col items-center px-8 py-4'>
         <div className='m-1 flex items-center justify-center rounded-full bg-dark px-2 py-1 text-base font-medium text-white'>
           <p className='max-w-full flex-initial text-sm font-normal leading-none'>
-            {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
+            {data.type}
           </p>
         </div>
         {/* if data.link is not empty render data.activity with a link to it */}
