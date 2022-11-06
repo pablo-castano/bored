@@ -50,7 +50,6 @@ export default function Home() {
             }}
           >
             <ActivityMetadata {...data} />
-
             <motion.button
               onClick={getRandomActivity}
               whileHover={{ scale: 1.3 }}

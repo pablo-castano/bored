@@ -1,13 +1,11 @@
 import { Footer } from 'flowbite-react';
 
-// import Header from './components/header';
 import Home from './components/home';
 
 export default function Index() {
   return (
     <>
       <div className='flex min-h-screen flex-col'>
-        {/* <Header /> */}
         <Home />
         <Footer container={true}>
           <Footer.Copyright href='#' by='Bored?' year={2022} />
