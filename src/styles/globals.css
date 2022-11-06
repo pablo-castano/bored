@@ -28,6 +28,9 @@
   /* #endregion  /**======== Primary Color =========== */
 }
 
+.border {
+  border: 0 !important;
+}
 @layer base {
   /* inter var - latin */
   @font-face {
