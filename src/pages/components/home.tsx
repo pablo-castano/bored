@@ -25,7 +25,7 @@ type Activity = {
 export default function Home() {
   const [data, setData] = useState<Activity>({} as Activity);
   const [loading, setLoading] = useState<boolean>(false);
-  // getserverSideProps and fetch data from API getRandomActivity using typescript
+
   const getRandomActivity = async () => {
     setLoading(true);
     const response = await fetch('https://www.boredapi.com/api/activity/');
@@ -37,6 +37,7 @@ export default function Home() {
   useEffect(() => {
     getRandomActivity();
   }, []);
+
   return data.key ? (
     <div className=' flex flex-1 flex-col items-center justify-center py-2'>
       <main className='flex w-full flex-1 flex-col items-center justify-center px-20 text-center'>
