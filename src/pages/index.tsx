@@ -6,9 +6,7 @@ export default function Index() {
   return (
     <>
       <div className='flex min-h-screen flex-col'>
-        <div className='flex justify-end p-4'>
-          <Filter />
-        </div>
+        <Filter />
         <Home />
         <FooterComponent />
       </div>

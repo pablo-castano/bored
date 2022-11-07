@@ -5,13 +5,13 @@ import { useState } from 'react';
 import Rating from './rating';
 
 export default function Filter() {
-  const [show, setShow] = useState(false);
-  const [price, setPrice] = useState(0);
-  const [participants, setParticipants] = useState(1);
-  const [accessibility, setAccessibility] = useState(0);
-  const [categories, setCategories] = useState('');
+  const [show, setShow] = useState<boolean>(false);
+  const [price, setPrice] = useState<number>(0);
+  const [participants, setParticipants] = useState<number>(1);
+  const [accessibility, setAccessibility] = useState<number>(0);
+  const [categories, setCategories] = useState<string>('');
   return (
-    <>
+    <div className='flex justify-end p-4'>
       <Button
         onClick={() => {
           setShow(true);
@@ -64,7 +64,7 @@ export default function Filter() {
             <div>
               <label
                 htmlFor='default-range'
-                className='mb-2 block flex text-sm font-medium dark:text-gray-300'
+                className='mb-2 block flex text-sm font-medium dark:text-gray-400'
               >
                 <span className='mr-2'>Participants</span>{' '}
                 <div className='dark:text-secondary-300'>
@@ -147,6 +147,6 @@ export default function Filter() {
           </div>
         </Modal.Body>
       </Modal>
-    </>
+    </div>
   );
 }
