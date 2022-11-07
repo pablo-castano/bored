@@ -1,8 +1,9 @@
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import ActivityMetadata from './activity-metadata';
+import { AppCtx } from '../index';
 
 const mountedStyle = {
   animation: 'inAnimation 250ms ease-in',
@@ -25,18 +26,36 @@ type Activity = {
 export default function Home() {
   const [data, setData] = useState<Activity>({} as Activity);
   const [loading, setLoading] = useState<boolean>(false);
+  const appContext = useContext(AppCtx);
 
   const getRandomActivity = async () => {
     setLoading(true);
-    const response = await fetch('https://www.boredapi.com/api/activity/');
+    // // depending on the object keys in the filter array, we will add the query params to the url
+    // const url = appContext?.filters.reduce(
+    //   (acc, curr) => `${acc}&${curr.key}=${curr.value}`,
+    //   'https://www.boredapi.com/api/activity?'
+    // );
+
+    // if type object in filter array is "", we will not add any query params to the url
+    const url = appContext?.filters.reduce((acc, curr) => {
+      if (curr.value !== '') {
+        return `${acc}&${curr.key}=${curr.value}`;
+      } else {
+        return acc;
+      }
+    }, 'https://www.boredapi.com/api/activity?');
+    console.log(appContext?.filters);
+    const response = await fetch(url as string);
     const data = await response.json();
+    // set activity data uppercase first letter
+    data.type = data.type.charAt(0).toUpperCase() + data.type.slice(1);
     setData(data);
     setLoading(false);
   };
 
   useEffect(() => {
     getRandomActivity();
-  }, []);
+  }, [appContext?.filters]);
 
   return data.key ? (
     <div className=' flex flex-1 flex-col items-center justify-center py-2'>
