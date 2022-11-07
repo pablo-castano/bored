@@ -30,13 +30,6 @@ export default function Home() {
 
   const getRandomActivity = async () => {
     setLoading(true);
-    // // depending on the object keys in the filter array, we will add the query params to the url
-    // const url = appContext?.filters.reduce(
-    //   (acc, curr) => `${acc}&${curr.key}=${curr.value}`,
-    //   'https://www.boredapi.com/api/activity?'
-    // );
-
-    // if type object in filter array is "", we will not add any query params to the url
     const url = appContext?.filters.reduce((acc, curr) => {
       if (curr.value !== '') {
         return `${acc}&${curr.key}=${curr.value}`;
@@ -44,7 +37,6 @@ export default function Home() {
         return acc;
       }
     }, 'https://www.boredapi.com/api/activity?');
-    console.log(appContext?.filters);
     const response = await fetch(url as string);
     const data = await response.json();
     // set activity data uppercase first letter
@@ -54,6 +46,22 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const getRandomActivity = async () => {
+      setLoading(true);
+      const url = appContext?.filters.reduce((acc, curr) => {
+        if (curr.value !== '') {
+          return `${acc}&${curr.key}=${curr.value}`;
+        } else {
+          return acc;
+        }
+      }, 'https://www.boredapi.com/api/activity?');
+      const response = await fetch(url as string);
+      const data = await response.json();
+      // set activity data uppercase first letter
+      data.type = data.type.charAt(0).toUpperCase() + data.type.slice(1);
+      setData(data);
+      setLoading(false);
+    };
     getRandomActivity();
   }, [appContext?.filters]);
 
