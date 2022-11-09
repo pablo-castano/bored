@@ -43,12 +43,12 @@ export default function ActivityMetadata(data: props) {
           {/* change UserIcon color depending on how many participants are 0-5 */}
           <Rating icon='participants' value={data.participants} />
         </div>
-        <p className='mt-2 text-white'>
+        <span className='mt-2 text-white'>
           <Rating icon='price' value={data.price} />
-        </p>
-        <p className='mt-2 flex items-end text-white'>
+        </span>
+        <span className='mt-2 flex items-end text-white'>
           <Rating icon='accessibility' value={data.accessibility} />
-        </p>
+        </span>
       </div>
     </div>
   );

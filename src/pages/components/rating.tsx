@@ -63,7 +63,7 @@ const Icon = ({ icon, value }: Props) => {
     case 'accessibility': // change color and text depending on accessibility 0-1
       return (
         <div className='m-1 flex items-center justify-center rounded-full bg-white px-2 py-1 text-base font-medium'>
-          <p
+          <span
             className={`max-w-full flex-initial text-sm font-normal font-medium leading-none ${
               (value as number) <= 0.5
                 ? 'text-green-500'
@@ -77,7 +77,7 @@ const Icon = ({ icon, value }: Props) => {
               : (value as number) <= 0.8
               ? 'Medium'
               : 'Hard'}
-          </p>
+          </span>
         </div>
       );
     default:
