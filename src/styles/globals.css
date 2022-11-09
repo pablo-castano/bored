@@ -28,7 +28,7 @@
   /* #endregion  /**======== Primary Color =========== */
 }
 /* change color of range thumb */
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   background-color: white;
 }
 .border {
